@@ -1,0 +1,122 @@
+{
+ "autoname": "TD/.####",
+ "creation": "2019-11-03 00:42:45.887195",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "lead",
+  "section_break_2",
+  "test_drive_offered",
+  "test_drive_taken",
+  "feedback_taken",
+  "column_break_4",
+  "entered_in_gdms",
+  "date__time",
+  "duration",
+  "column_break_8",
+  "location",
+  "model",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "test_drive_offered",
+   "fieldtype": "Data",
+   "label": "Test Drive Offered"
+  },
+  {
+   "fieldname": "test_drive_taken",
+   "fieldtype": "Data",
+   "label": "Test Drive Taken"
+  },
+  {
+   "fieldname": "feedback_taken",
+   "fieldtype": "Data",
+   "label": "Feedback Taken"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "entered_in_gdms",
+   "fieldtype": "Data",
+   "label": "Entered in GDMS"
+  },
+  {
+   "fieldname": "date__time",
+   "fieldtype": "Datetime",
+   "label": "Date  Time"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Data",
+   "label": "Duration (Min)"
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Test Drive",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "lead",
+   "fieldtype": "Link",
+   "label": "Lead",
+   "options": "Lead"
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2019-11-08 17:17:15.591046",
+ "modified_by": "Administrator",
+ "module": "Automobile",
+ "name": "Test Drive",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Consultant",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

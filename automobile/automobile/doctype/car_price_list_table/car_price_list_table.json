@@ -1,0 +1,64 @@
+{
+ "creation": "2019-12-04 15:30:48.607234",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "is_tax",
+  "percent",
+  "account",
+  "extra_charges",
+  "rate",
+  "uom"
+ ],
+ "fields": [
+  {
+   "fieldname": "extra_charges",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Car & Charges",
+   "options": "Item"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rate"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_tax",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Tax"
+  },
+  {
+   "fieldname": "percent",
+   "fieldtype": "Percent",
+   "label": "Percent"
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account"
+  }
+ ],
+ "istable": 1,
+ "modified": "2019-12-17 19:21:15.451679",
+ "modified_by": "Administrator",
+ "module": "Automobile",
+ "name": "Car Price List Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

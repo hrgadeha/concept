@@ -1,0 +1,53 @@
+{
+ "creation": "2019-11-03 00:32:35.470368",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "document_link",
+  "date",
+  "folloup_by",
+  "note"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "columns": 4,
+   "fieldname": "note",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Note"
+  },
+  {
+   "fieldname": "folloup_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Folloup By",
+   "options": "User"
+  },
+  {
+   "fieldname": "document_link",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Document Link",
+   "options": "Event"
+  }
+ ],
+ "istable": 1,
+ "modified": "2019-11-21 14:23:29.957087",
+ "modified_by": "Administrator",
+ "module": "Automobile",
+ "name": "Follow Up Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
