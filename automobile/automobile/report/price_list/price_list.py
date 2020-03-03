@@ -25,6 +25,7 @@ def get_column():
 		_("RTO Tax") + ":Currency:150",
 		_("Passing Charges") + ":Currency:150",
 		_("Regi Charges") + ":Currency:150",
+		_("CRTM Charges") + ":Currency:150",
 		_("M Tax") + ":Currency:150",
 		_("Ex Warrenty") + ":Currency:150",
 		_("RSA 1 Year") + ":Currency:150",
@@ -53,13 +54,14 @@ def get_data(conditions,filters):
                                         (ex_showroom * 0.95) * 0.006) * 0.18,
 					IF(booking_type="CORPORATE", price_list_rate * 0.12, price_list_rate * 0.06),
 					passing_charges,
-					IF(booking_type="TAXI",3350 ,2600),
+					regi_charges,
+					crtm_charges,
 					(case
-                                            when price_list_rate > 299999 and price_list_rate < 499999 then (price_list_rate * 0.0175) + 25
-					    when price_list_rate > 499999 and price_list_rate < 999999 then (price_list_rate * 0.02) + 25
-					    when price_list_rate > 999999 and price_list_rate < 1999999 then (price_list_rate * 0.0225) + 25
-					    when price_list_rate > 2999999 then (price_list_rate * 0.025) + 25
-					    when price_list_rate < 299999 then (price_list_rate * 0.001) + 25
+                                            when price_list_rate > 299999 and price_list_rate < 499999 then (price_list_rate * 0.0175) + mtax_fix_component
+					    when price_list_rate > 499999 and price_list_rate < 999999 then (price_list_rate * 0.02) + mtax_fix_component
+					    when price_list_rate > 999999 and price_list_rate < 1999999 then (price_list_rate * 0.0225) + mtax_fix_component
+					    when price_list_rate > 2999999 then (price_list_rate * 0.025) + mtax_fix_component
+					    when price_list_rate < 299999 then (price_list_rate * 0.001) + mtax_fix_component
                                         end),
 					ex_warrenty,rsa_1_year,basic_kit,fastag,
 					IF(ex_showroom > 1000000, ex_showroom * 0.01, 0.0),
@@ -82,13 +84,14 @@ def get_data(conditions,filters):
                                         (ex_showroom * 0.95) * 0.006) * 0.18 +
 					IF(booking_type="CORPORATE", price_list_rate * 0.12, price_list_rate * 0.06) +
 					passing_charges +
-					IF(booking_type="TAXI",3350 ,2600) +
+					regi_charges +
+					crtm_charges +
 					(case
-                                            when price_list_rate > 299999 and price_list_rate < 499999 then (price_list_rate * 0.0175) + 25
-					    when price_list_rate > 499999 and price_list_rate < 999999 then (price_list_rate * 0.02) + 25
-					    when price_list_rate > 999999 and price_list_rate < 1999999 then (price_list_rate * 0.0225) + 25
-					    when price_list_rate > 2999999 then (price_list_rate * 0.025) + 25
-					    when price_list_rate < 299999 then (price_list_rate * 0.001) + 25
+                                            when price_list_rate > 299999 and price_list_rate < 499999 then (price_list_rate * 0.0175) + mtax_fix_component
+					    when price_list_rate > 499999 and price_list_rate < 999999 then (price_list_rate * 0.02) + mtax_fix_component
+					    when price_list_rate > 999999 and price_list_rate < 1999999 then (price_list_rate * 0.0225) + mtax_fix_component
+					    when price_list_rate > 2999999 then (price_list_rate * 0.025) + mtax_fix_component
+					    when price_list_rate < 299999 then (price_list_rate * 0.001) + mtax_fix_component
                                         end) +
 					ex_warrenty + rsa_1_year + basic_kit + fastag +
 					IF(ex_showroom > 1000000, ex_showroom * 0.01, 0.0)

@@ -13,7 +13,7 @@ def transferStock(doc,method):
 			"stock_entry_type": "Material Transfer",
 			"posting_date": doc.transaction_date,
 			"from_warehouse": doc.set_warehouse,
-			"to_warehouse": "Allotted - C",
+			"to_warehouse": doc.set_source_warehouse,
 			"so" : doc.name,
 			"items": [
 			{
@@ -21,8 +21,8 @@ def transferStock(doc,method):
 				"qty": d.qty,
 				"uom": d.uom,
 				"s_warehouse": doc.set_warehouse,
-				"t_warehouse": "Allotted - C",
-				"serial_no": d.chassis_number
+				"t_warehouse": doc.set_source_warehouse,
+				"serial_no": d.serial_no
 			}
 			]
 			})
@@ -44,10 +44,29 @@ def cancelSO(doc,method):
                 doc_or.cancel()
 
 @frappe.whitelist(allow_guest=True)
+def getAlloted(company):
+        mt = frappe.db.sql("""select name from `tabWarehouse` where company = '{0}' and warehouse_name LIKE 'Allotted%'
+				;""".format(company),as_list=1)
+        return mt if mt else ""
+
+@frappe.whitelist(allow_guest=True)
 def getPrice(selling_price_list,item_code,from_date):
 	mt = frappe.db.sql("""select price_list_rate,cc from `tabItem Price` where price_list = %s and item_code = %s and 
 				%s between valid_from and valid_upto;""",(selling_price_list,item_code,from_date),as_list=1)
-	return mt
+	return mt if mt else ""
+
+@frappe.whitelist(allow_guest=True)
+def SerailNO(company,item_code):
+	mt = frappe.db.sql("""select name,warehouse from `tabSerial No` where company = '{0}' and item_code = '{1}' and warehouse LIKE 'Free%'
+                                ORDER BY allotted_date asc limit 1;""".format(company,item_code),as_list=1)
+	if mt:
+		return mt if mt else ""
+
+	else:
+		st = frappe.db.sql("""select name,warehouse from `tabSerial No` where company = '{0}' and item_code = '{1}' and warehouse LIKE 'In Transit%'
+                                ORDER BY allotted_date asc limit 1;""".format(company,item_code),as_list=1)
+
+		return st if st else ""
 
 @frappe.whitelist(allow_guest=True)
 def get_data(selling_price_list,item_code,from_date):
@@ -70,13 +89,13 @@ def get_data(selling_price_list,item_code,from_date):
                                         (ex_showroom * 0.95) * 0.006) * 0.18,
 					IF(booking_type="CORPORATE", price_list_rate * 0.12, price_list_rate * 0.06),
 					passing_charges,
-					IF(booking_type="TAXI",3350 ,2600),
+					regi_charges,
 					(case
-                                            when price_list_rate > 299999 and price_list_rate < 499999 then (price_list_rate * 0.0175) + 25
-					    when price_list_rate > 499999 and price_list_rate < 999999 then (price_list_rate * 0.02) + 25
-					    when price_list_rate > 999999 and price_list_rate < 1999999 then (price_list_rate * 0.0225) + 25
-					    when price_list_rate > 2999999 then (price_list_rate * 0.025) + 25
-					    when price_list_rate < 299999 then (price_list_rate * 0.001) + 25
+                                            when price_list_rate > 299999 and price_list_rate < 499999 then (price_list_rate * 0.0175) + mtax_fix_component
+					    when price_list_rate > 499999 and price_list_rate < 999999 then (price_list_rate * 0.02) + mtax_fix_component
+					    when price_list_rate > 999999 and price_list_rate < 1999999 then (price_list_rate * 0.0225) + mtax_fix_component
+					    when price_list_rate > 2999999 then (price_list_rate * 0.025) + mtax_fix_component
+					    when price_list_rate < 299999 then (price_list_rate * 0.001) + mtax_fix_component
                                         end),
 					ex_warrenty,rsa_1_year,basic_kit,fastag,
 					IF(ex_showroom > 1000000, ex_showroom * 0.01, 0.0),
@@ -99,11 +118,11 @@ def get_data(selling_price_list,item_code,from_date):
 					passing_charges +
 					IF(booking_type="TAXI",3350 ,2600) +
 					(case
-                                            when price_list_rate > 299999 and price_list_rate < 499999 then (price_list_rate * 0.0175) + 25
-					    when price_list_rate > 499999 and price_list_rate < 999999 then (price_list_rate * 0.02) + 25
-					    when price_list_rate > 999999 and price_list_rate < 1999999 then (price_list_rate * 0.0225) + 25
-					    when price_list_rate > 2999999 then (price_list_rate * 0.025) + 25
-					    when price_list_rate < 299999 then (price_list_rate * 0.001) + 25
+                                            when price_list_rate > 299999 and price_list_rate < 499999 then (price_list_rate * 0.0175) + mtax_fix_component
+					    when price_list_rate > 499999 and price_list_rate < 999999 then (price_list_rate * 0.02) + mtax_fix_component
+					    when price_list_rate > 999999 and price_list_rate < 1999999 then (price_list_rate * 0.0225) + mtax_fix_component
+					    when price_list_rate > 2999999 then (price_list_rate * 0.025) + mtax_fix_component
+					    when price_list_rate < 299999 then (price_list_rate * 0.001) + mtax_fix_component
                                         end) +
 					ex_warrenty + rsa_1_year + basic_kit + fastag +
 					IF(ex_showroom > 1000000, ex_showroom * 0.01, 0.0)
@@ -111,7 +130,7 @@ def get_data(selling_price_list,item_code,from_date):
 					sgst_14_account, sgst_14,
 					cgst_14_account, cgst_14,
 					sgst_9_account, sgst_9,
-					cgst_9_account, cgst_9,tariff_less
+					cgst_9_account, cgst_9,tariff_less,crtm_charges,mtax_fix_component,brand
 				from `tabItem Price` where selling = 1 and price_list = %s and item_code = %s and 
                                 %s between valid_from and valid_upto;""",(selling_price_list,item_code,from_date),as_list=1)
         return invoice
