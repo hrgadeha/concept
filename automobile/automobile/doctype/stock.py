@@ -73,20 +73,8 @@ def get_data(selling_price_list,item_code,from_date):
         invoice = frappe.db.sql("""select item_code,item_name,price_list_rate,
 					((price_list_rate * 0.28) + (price_list_rate * (gst_cess/100))),
 					ex_showroom,handling_charges,
-					IF(cc >= 1001 and cc <= 1500,((ex_showroom * 0.95) * (0.03283 * (100 - tariff_less)) / 100),((ex_showroom * 0.95) * (0.0344 * (100 - tariff_less)) / 100)),
-					(case
-						 when cc <= 1000 then 8240
-						 when cc >= 1001 and cc <= 1500 then 12488
-						 when cc >= 1501 then 27259
-					end),
-					(ex_showroom * 0.95) * 0.006,
-					(IF(cc >= 1001 and cc <= 1500,((ex_showroom * 0.95) * (0.03283 * (100 - tariff_less)) / 100),((ex_showroom * 0.95) * (0.0344 * (100 - tariff_less)) / 100)) + 
-                                        (case
-                                                 when cc <= 1000 then 8240
-                                                 when cc >= 1001 and cc <= 1500 then 12488
-                                                 when cc >= 1501 then 27259
-                                        end) + 
-                                        (ex_showroom * 0.95) * 0.006) * 0.18,
+					(insurance_own_damage * ((100 - tariff_less) / 100)),insurance_tp_and_others,insurance_zero_dep,
+					((insurance_own_damage * ((100 - tariff_less) / 100)) + insurance_tp_and_others + insurance_zero_dep) * 0.18,
 					IF(booking_type="CORPORATE", price_list_rate * 0.12, price_list_rate * 0.06),
 					passing_charges,
 					regi_charges,
