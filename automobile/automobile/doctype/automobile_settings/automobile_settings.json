@@ -1,0 +1,45 @@
+{
+ "creation": "2020-03-04 19:09:30.395393",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "insert_standard_service_item",
+  "item_inserted"
+ ],
+ "fields": [
+  {
+   "fieldname": "insert_standard_service_item",
+   "fieldtype": "Button",
+   "label": "Insert Standard Service Item"
+  },
+  {
+   "default": "0",
+   "fieldname": "item_inserted",
+   "fieldtype": "Check",
+   "label": "Item Inserted",
+   "read_only": 1
+  }
+ ],
+ "issingle": 1,
+ "modified": "2020-03-04 19:09:47.717673",
+ "modified_by": "Administrator",
+ "module": "Automobile",
+ "name": "Automobile Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

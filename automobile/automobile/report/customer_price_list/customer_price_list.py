@@ -14,18 +14,10 @@ def execute(filters=None):
 def get_column():
         return [_("Item Code") + ":Link/Item:150",
                 _("Item Name") + ":Data:150",
-		_("Basic Price") + ":Currency:150",
-		_("GST") + ":Currency:150",
                 _("Ex Showroom") + ":Currency:150",
 		_("Handling Charges") + ":Currency:150",
-		_("INSURANCE Own Damage") + ":Currency:180",
-		_("INSURANCE TP & Others") + ":Currency:180",
-		_("INSURANCE Zero Dep") + ":Currency:180",
-		_("INSURANCE GST") + ":Currency:150",
+		_("INSURANCE") + ":Currency:180",
 		_("RTO Tax") + ":Currency:150",
-		_("Passing Charges") + ":Currency:150",
-		_("Regi Charges") + ":Currency:150",
-		_("CRTM Charges") + ":Currency:150",
 		_("M Tax") + ":Currency:150",
 		_("Ex Warrenty") + ":Currency:150",
 		_("RSA 1 Year") + ":Currency:150",
@@ -35,14 +27,14 @@ def get_column():
 		_("On Road Price") + ":Currency:150"]
 
 def get_data(conditions,filters):
-        invoice = frappe.db.sql("""select item_code,item_name,price_list_rate,
-					((price_list_rate * 0.28) + (price_list_rate * (gst_cess/100))),
+        invoice = frappe.db.sql("""select item_code,item_name,
 					ex_showroom,handling_charges,
-					,
-					IF(booking_type="CORPORATE", price_list_rate * 0.12, price_list_rate * 0.06),
-					passing_charges,
-					regi_charges,
-					crtm_charges,
+					(insurance_own_damage * ((100 - tariff_less) / 100)) + insurance_tp_and_others + insurance_zero_dep +
+					((insurance_own_damage * ((100 - tariff_less) / 100)) + insurance_tp_and_others + insurance_zero_dep) * 0.18,
+					(IF(booking_type="CORPORATE", price_list_rate * 0.12, price_list_rate * 0.06) +
+					passing_charges +
+					regi_charges +
+					crtm_charges),
 					(case
                                             when price_list_rate > 299999 and price_list_rate < 499999 then (price_list_rate * 0.0175) + mtax_fix_component
 					    when price_list_rate > 499999 and price_list_rate < 999999 then (price_list_rate * 0.02) + mtax_fix_component
