@@ -177,7 +177,7 @@
    "label": "Dealer Share GST On POI / Corporate"
   }
  ],
- "modified": "2020-03-10 16:07:11.467824",
+ "modified": "2020-03-17 21:29:16.270188",
  "modified_by": "Administrator",
  "module": "Automobile",
  "name": "Manufacturer Scheme Master",
@@ -196,7 +196,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "car",

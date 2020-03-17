@@ -3,12 +3,12 @@
   "docstatus": 0,
   "doctype": "Custom Script",
   "dt": "Attendance",
-  "modified": "2019-06-05 17:16:37.728384",
+  "modified": "2020-03-16 12:47:24.933544",
   "name": "Attendance-Client",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "script": "frappe.ui.form.on('Attendance', {\n\tvalidate(frm) {\n\t\tif (!frm.doc.location && frm.doc.latitude && frm.doc.longitude) {\n\t\t\tfrm.fields_dict.location.map.setView([frm.doc.latitude, frm.doc.longitude], 13);\n\t\t}\n\t\telse {\n\t\t\tfrm.doc.latitude = frm.fields_dict.location.map.getCenter()['lat'];\n\t\t\tfrm.doc.longitude = frm.fields_dict.location.map.getCenter()['lng'];\n\t\t}\n\t},\n});\n\nfrappe.ui.form.on(\"Attendance\", \"google_map\", function(frm) {\n   window.open(\"http://www.google.com/maps/place/\" + frm.doc.latitude + \",\" + frm.doc.longitude)\n});"
+  "script": "var lat = \"\";\nvar long = \"\";\n\nfrappe.ui.form.on('Attendance', {\n\tonload(frm) {\n\t    navigator.geolocation.getCurrentPosition(success);\n\t    \n\t    function success(pos) {\n            var crd = pos.coords;\n            lat = crd.latitude;\n            long = crd.longitude;\n        \n\t    if(frm.doc.docstatus === 0){\n\t\t\tfrm.set_value(\"latitude\",lat);\n\t        frm.set_value(\"longitude\",long);\n\t    }\n\t    }\n\t}\n});\n\nfrappe.ui.form.on(\"Attendance\", \"google_map\", function(frm) {\n   window.open(\"http://www.google.com/maps/place/\" + lat + \",\" + long);\n});"
  },
  {
   "docstatus": 0,

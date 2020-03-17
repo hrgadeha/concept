@@ -1,21 +1,48 @@
 {
- "creation": "2020-03-06 19:17:19.812622",
+ "creation": "2020-03-17 22:02:32.480332",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "company",
+  "claim_based_on",
   "booking_id",
-  "dms_date"
+  "chassis_number",
+  "column_break_4",
+  "company",
+  "dms_date",
+  "cash_discount_section",
+  "cash_discount_to_customer",
+  "manufacturer_share_basic",
+  "manufacturer_share_gst",
+  "column_break_11",
+  "dealer_share_basic",
+  "dealer_share_gst",
+  "exchange_benefits_section",
+  "additional_discount_for_exchange_customers",
+  "manufacturer_share_basic_on_exchange",
+  "manufacturer_share_gst_on_exchnage",
+  "column_break_18",
+  "dealer_share_basic_on_exchnage",
+  "dealer_share_gst_on_exchnage",
+  "poi_corporate_benefits_section",
+  "additional_discount_for__poi__corporate_customers",
+  "manufacturer_share_basic_on_poi_corporate",
+  "manufacturer_share_gst_on_poi_corporate",
+  "column_break_25",
+  "dealer_share_basic_on_poi_corporate",
+  "dealer_share_gst_on_poi_corporate"
  ],
  "fields": [
   {
    "fieldname": "company",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Company",
-   "options": "Company"
+   "options": "Company",
+   "reqd": 1
   },
   {
+   "depends_on": "eval:doc.claim_based_on == \"Booking Id\";",
    "fieldname": "booking_id",
    "fieldtype": "Link",
    "label": "Booking ID",
@@ -27,9 +54,147 @@
    "in_list_view": 1,
    "label": "DMS Date",
    "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.claim_based_on == \"Chassis Number\";",
+   "fieldname": "chassis_number",
+   "fieldtype": "Link",
+   "label": "Chassis Number",
+   "options": "Serial No"
+  },
+  {
+   "fieldname": "claim_based_on",
+   "fieldtype": "Select",
+   "label": "Claim Based On",
+   "options": "\nBooking Id\nChassis Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "cash_discount_section",
+   "fieldtype": "Section Break",
+   "label": "Cash Discount"
+  },
+  {
+   "fieldname": "cash_discount_to_customer",
+   "fieldtype": "Currency",
+   "label": "Cash Discount To Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manufacturer_share_basic",
+   "fieldtype": "Currency",
+   "label": "Manufacturer Share Basic",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manufacturer_share_gst",
+   "fieldtype": "Currency",
+   "label": "Manufacturer Share GST",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dealer_share_basic",
+   "fieldtype": "Currency",
+   "label": "Dealer Share Basic",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dealer_share_gst",
+   "fieldtype": "Currency",
+   "label": "Dealer Share GST",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "exchange_benefits_section",
+   "fieldtype": "Section Break",
+   "label": "Exchange Benefits"
+  },
+  {
+   "fieldname": "additional_discount_for_exchange_customers",
+   "fieldtype": "Currency",
+   "label": "Additional Discount For Exchange Customers",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manufacturer_share_basic_on_exchange",
+   "fieldtype": "Currency",
+   "label": "Manufacturer Share Basic On Exchange",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manufacturer_share_gst_on_exchnage",
+   "fieldtype": "Currency",
+   "label": "Manufacturer Share GST On Exchnage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dealer_share_basic_on_exchnage",
+   "fieldtype": "Currency",
+   "label": "Dealer Share Basic On Exchnage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dealer_share_gst_on_exchnage",
+   "fieldtype": "Currency",
+   "label": "Dealer Share GST On Exchnage",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "poi_corporate_benefits_section",
+   "fieldtype": "Section Break",
+   "label": "POI / Corporate Benefits"
+  },
+  {
+   "fieldname": "additional_discount_for__poi__corporate_customers",
+   "fieldtype": "Currency",
+   "label": "Additional Discount For  POI / Corporate Customers",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manufacturer_share_basic_on_poi_corporate",
+   "fieldtype": "Currency",
+   "label": "Manufacturer Share Basic On POI / Corporate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manufacturer_share_gst_on_poi_corporate",
+   "fieldtype": "Currency",
+   "label": "Manufacturer Share GST On POI / Corporate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_25",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dealer_share_basic_on_poi_corporate",
+   "fieldtype": "Currency",
+   "label": "Dealer Share Basic On POI / Corporate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dealer_share_gst_on_poi_corporate",
+   "fieldtype": "Currency",
+   "label": "Dealer Share GST On POI / Corporate",
+   "read_only": 1
   }
  ],
- "modified": "2020-03-06 19:20:45.566337",
+ "modified": "2020-03-17 22:14:10.852072",
  "modified_by": "Administrator",
  "module": "Automobile",
  "name": "OEM Claim Management",

@@ -33,8 +33,8 @@ def createItem():
         "is_sales_item": 1,
         "description": "Extended Warranty"
         })
-        item.insert()
-        item.save()
+	item.insert()
+	item.save()
 
 	item = frappe.get_doc({
         "doctype": "Item",
@@ -45,8 +45,8 @@ def createItem():
         "is_sales_item": 1,
         "description": "INSURANCE GST"
         })
-        item.insert()
-        item.save()
+	item.insert()
+	item.save()
 
 	item = frappe.get_doc({
         "doctype": "Item",
@@ -57,8 +57,8 @@ def createItem():
         "is_sales_item": 1,
         "description": "INSURANCE Own Damage"
         })
-        item.insert()
-        item.save()
+	item.insert()
+	item.save()
 
 	item = frappe.get_doc({
         "doctype": "Item",
@@ -69,8 +69,8 @@ def createItem():
         "is_sales_item": 1,
         "description": "INSURANCE TP & Others"
         })
-        item.insert()
-        item.save()
+	item.insert()
+	item.save()
 
 	item = frappe.get_doc({
         "doctype": "Item",
@@ -81,8 +81,8 @@ def createItem():
         "is_sales_item": 1,
         "description": "INSURANCE Zero Dep"
         })
-        item.insert()
-        item.save()
+	item.insert()
+	item.save()
 
 	item = frappe.get_doc({
         "doctype": "Item",
@@ -93,8 +93,8 @@ def createItem():
         "is_sales_item": 1,
         "description": "M. Tax"
         })
-        item.insert()
-        item.save()
+	item.insert()
+	item.save()
 
 	item = frappe.get_doc({
         "doctype": "Item",
@@ -105,8 +105,8 @@ def createItem():
         "is_sales_item": 1,
         "description": "Passing Charges"
         })
-        item.insert()
-        item.save()
+	item.insert()
+	item.save()
 
 	item = frappe.get_doc({
         "doctype": "Item",
@@ -117,8 +117,8 @@ def createItem():
         "is_sales_item": 1,
         "description": "REGI. CHARGES"
         })
-        item.insert()
-        item.save()
+	item.insert()
+	item.save()
 
 	item = frappe.get_doc({
         "doctype": "Item",
@@ -129,8 +129,8 @@ def createItem():
         "is_sales_item": 1,
         "description": "RTO Tax"
         })
-        item.insert()
-        item.save()
+	item.insert()
+	item.save()
 
 	item = frappe.get_doc({
         "doctype": "Item",
@@ -141,8 +141,8 @@ def createItem():
         "is_sales_item": 1,
         "description": "RSA CHARGES (1 YEAR)"
         })
-        item.insert()
-        item.save()
+	item.insert()
+	item.save()
 
 	item = frappe.get_doc({
         "doctype": "Item",
@@ -153,5 +153,5 @@ def createItem():
         "is_sales_item": 1,
         "description": "Handling Charges"
         })
-        item.insert()
-        item.save()
+	item.insert()
+	item.save()
