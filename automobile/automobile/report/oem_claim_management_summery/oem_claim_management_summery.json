@@ -1,0 +1,24 @@
+{
+ "add_total_row": 1,
+ "creation": "2020-03-20 18:05:59.480642",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2020-03-20 18:06:02.028284",
+ "modified_by": "Administrator",
+ "module": "Automobile",
+ "name": "OEM Claim Management Summery",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "OEM Claim Management",
+ "report_name": "OEM Claim Management Summery",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

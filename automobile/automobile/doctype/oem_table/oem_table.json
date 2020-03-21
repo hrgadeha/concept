@@ -1,0 +1,173 @@
+{
+ "creation": "2020-03-20 16:30:34.359838",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "cash_discount_section",
+  "cash_discount_to_customer",
+  "manufacturer_share_basic",
+  "manufacturer_share_gst",
+  "column_break_11",
+  "dealer_share_basic",
+  "dealer_share_gst",
+  "exchange_benefits_section",
+  "additional_discount_for_exchange_customers",
+  "manufacturer_share_basic_on_exchange",
+  "manufacturer_share_gst_on_exchnage",
+  "column_break_18",
+  "dealer_share_basic_on_exchnage",
+  "dealer_share_gst_on_exchnage",
+  "poi_corporate_benefits_section",
+  "additional_discount_for__poi__corporate_customers",
+  "manufacturer_share_basic_on_poi_corporate",
+  "manufacturer_share_gst_on_poi_corporate",
+  "column_break_25",
+  "dealer_share_basic_on_poi_corporate",
+  "dealer_share_gst_on_poi_corporate",
+  "car"
+ ],
+ "fields": [
+  {
+   "collapsible": 1,
+   "fieldname": "cash_discount_section",
+   "fieldtype": "Section Break",
+   "label": "Cash Discount"
+  },
+  {
+   "fieldname": "cash_discount_to_customer",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Cash Discount To Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manufacturer_share_basic",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Manufacturer Share Basic",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manufacturer_share_gst",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Manufacturer Share GST",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dealer_share_basic",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Dealer Share Basic",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dealer_share_gst",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Dealer Share GST",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "exchange_benefits_section",
+   "fieldtype": "Section Break",
+   "label": "Exchange Benefits"
+  },
+  {
+   "fieldname": "additional_discount_for_exchange_customers",
+   "fieldtype": "Currency",
+   "label": "Additional Discount For Exchange Customers",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manufacturer_share_basic_on_exchange",
+   "fieldtype": "Currency",
+   "label": "Manufacturer Share Basic On Exchange",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manufacturer_share_gst_on_exchnage",
+   "fieldtype": "Currency",
+   "label": "Manufacturer Share GST On Exchnage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dealer_share_basic_on_exchnage",
+   "fieldtype": "Currency",
+   "label": "Dealer Share Basic On Exchnage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dealer_share_gst_on_exchnage",
+   "fieldtype": "Currency",
+   "label": "Dealer Share GST On Exchnage",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "poi_corporate_benefits_section",
+   "fieldtype": "Section Break",
+   "label": "POI / Corporate Benefits"
+  },
+  {
+   "fieldname": "additional_discount_for__poi__corporate_customers",
+   "fieldtype": "Currency",
+   "label": "Additional Discount For  POI / Corporate Customers",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manufacturer_share_basic_on_poi_corporate",
+   "fieldtype": "Currency",
+   "label": "Manufacturer Share Basic On POI / Corporate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manufacturer_share_gst_on_poi_corporate",
+   "fieldtype": "Currency",
+   "label": "Manufacturer Share GST On POI / Corporate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_25",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dealer_share_basic_on_poi_corporate",
+   "fieldtype": "Currency",
+   "label": "Dealer Share Basic On POI / Corporate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dealer_share_gst_on_poi_corporate",
+   "fieldtype": "Currency",
+   "label": "Dealer Share GST On POI / Corporate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "car",
+   "fieldtype": "Link",
+   "label": "Car",
+   "options": "Item"
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-03-21 19:06:40.688418",
+ "modified_by": "Administrator",
+ "module": "Automobile",
+ "name": "OEM Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

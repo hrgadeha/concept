@@ -6,3 +6,11 @@ frappe.ui.form.on('OEM Claim Management', {
 
 	// }
 });
+
+frappe.ui.form.on('OEM Claim Management', 'claimed', function(frm) {
+    $.each(frm.doc.oem_claim_management_table || [], function(i, d) {
+		 d.claimed = 1;
+		});
+		refresh_field("items");
+		frm.save("Update");
+});

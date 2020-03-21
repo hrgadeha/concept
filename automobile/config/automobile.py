@@ -52,6 +52,17 @@ def get_data():
                                         "onboard": 1
                                 }
                         ]
-                }
+                },
+		{
+			"label": _("Instalment"),
+			"items": [
+				{
+					"type": "report",
+					"is_query_report": True,
+					"name": "OEM Claim Management Summery",
+					"doctype": "OEM Claim Management"
+				}
+			]
+        	},
 ]
 
