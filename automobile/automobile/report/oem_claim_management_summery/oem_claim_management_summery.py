@@ -34,15 +34,26 @@ def get_data(filters):
 	if filters.get("from_date","start_date"):
 		from_date = filters.get("from_date")
 		to_date = filters.get("to_date")
-		weigh_bridge = frappe.db.sql("""select ocmt.dms_date, ocmt.car, ocmt.chassis_number, ot.cash_discount_to_customer,
-				ot.manufacturer_share_basic, ot.manufacturer_share_gst, ot.dealer_share_basic, ot.dealer_share_gst,
-				ot.additional_discount_for_exchange_customers, ot.manufacturer_share_basic_on_exchange, 
-				ot.manufacturer_share_gst_on_exchnage,
-				ot.dealer_share_basic_on_exchnage, ot.dealer_share_gst_on_exchnage, 
-				ot.additional_discount_for__poi__corporate_customers,
-				ot.manufacturer_share_basic_on_poi_corporate, ot.manufacturer_share_gst_on_poi_corporate, ot.dealer_share_basic_on_poi_corporate,
-				ot.dealer_share_gst_on_poi_corporate from `tabOEM Claim Management Table` ocmt, 
-				`tabManufacturer Scheme Master` ot
-				where ocmt.claimed = 0 and (ocmt.car = ot.car) and ocmt.dms_date between '%s' and '%s';"""%(from_date,to_date), as_list=1)
+		weigh_bridge = frappe.db.sql("""select ocmt.dms_date, ocmt.car, ocmt.chassis_number,
+				IF(ocmt.cash_discount = 1, ot.cash_discount_to_customer, 0), 
+				IF(ocmt.cash_discount = 1, ot.manufacturer_share_basic, 0), 
+				IF(ocmt.cash_discount = 1, ot.manufacturer_share_gst, 0), 
+				IF(ocmt.cash_discount = 1, ot.dealer_share_basic, 0), 
+				IF(ocmt.cash_discount = 1, ot.dealer_share_gst, 0), 
+
+				IF(ocmt.exchange_benefits = 1, ot.additional_discount_for_exchange_customers, 0), 
+                                IF(ocmt.exchange_benefits = 1, ot.manufacturer_share_basic_on_exchange, 0), 
+                                IF(ocmt.exchange_benefits = 1, ot.manufacturer_share_gst_on_exchnage, 0), 
+                                IF(ocmt.exchange_benefits = 1, ot.dealer_share_basic_on_exchnage, 0), 
+                                IF(ocmt.exchange_benefits = 1, ot.dealer_share_gst_on_exchnage, 0),
+ 
+				IF(ocmt.poi_corporate_benefits = 1, ot.additional_discount_for__poi__corporate_customers, 0), 
+                                IF(ocmt.poi_corporate_benefits = 1, ot.manufacturer_share_basic_on_poi_corporate, 0), 
+                                IF(ocmt.poi_corporate_benefits = 1, ot.manufacturer_share_gst_on_poi_corporate, 0), 
+                                IF(ocmt.poi_corporate_benefits = 1, ot.dealer_share_basic_on_poi_corporate, 0), 
+                                IF(ocmt.poi_corporate_benefits = 1, ot.dealer_share_gst_on_poi_corporate, 0)
+
+				from `tabOEM Claim Management Table` ocmt, `tabManufacturer Scheme Master` ot
+				where ocmt.claimed = 0 and (ocmt.car = ot.car) and (ocmt.dms_date between ot.valid_from and ot.valid_to) and ocmt.dms_date between '%s' and '%s';"""%(from_date,to_date), as_list=1)
 
 		return weigh_bridge
