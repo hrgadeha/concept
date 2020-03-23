@@ -92,7 +92,8 @@ doctype_js = {
 
 doc_events = {
 	"Lead": {
-		"validate": "automobile.automobile.doctype.test_drive.test_drive.createTestDrive"
+		"autoname": "automobile.automobile.doctype.test_drive.test_drive.createTestDrive",
+		"validate": "automobile.automobile.doctype.test_drive.test_drive.createTestDrivee"
 	},
 	"Sales Order": {
 		"on_submit": "automobile.automobile.doctype.stock.transferStock",
