@@ -96,14 +96,17 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2019-11-08 17:17:15.591046",
+ "modified": "2020-03-23 15:44:10.158705",
  "modified_by": "Administrator",
  "module": "Automobile",
  "name": "Test Drive",
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
+   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
