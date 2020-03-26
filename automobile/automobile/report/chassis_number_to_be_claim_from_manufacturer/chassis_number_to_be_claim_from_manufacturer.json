@@ -7,7 +7,7 @@
  "doctype": "Report",
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2020-03-22 14:43:03.760311",
+ "modified": "2020-03-26 15:53:51.659260",
  "modified_by": "Administrator",
  "module": "Automobile",
  "name": "Chassis Number To Be Claim From Manufacturer",
@@ -16,5 +16,9 @@
  "ref_doctype": "Sales Invoice",
  "report_name": "Chassis Number To Be Claim From Manufacturer",
  "report_type": "Script Report",
- "roles": []
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
 }

@@ -9,8 +9,11 @@ frappe.ui.form.on('OEM Claim Management', {
 
 frappe.ui.form.on('OEM Claim Management', 'claimed', function(frm) {
     $.each(frm.doc.oem_claim_management_table || [], function(i, d) {
-		 d.claimed = 1;
+		d.claimed = 1;
 		});
+
 		refresh_field("items");
+		frm.set_df_property('claimed',  'hidden',1);
+		frm.set_value("status","Claim Completed");
 		frm.save("Update");
 });

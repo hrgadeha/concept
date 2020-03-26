@@ -15,6 +15,12 @@ frappe.query_reports["OEM Claim Management Summery"] = {
             "label": __("To DMS Date"),
             "fieldtype": "Date",
 	    "default": frappe.datetime.month_end()
+        },
+	{
+            "fieldname": "claim",
+            "label": __("Manual Claim"),
+            "fieldtype": "Check",
+            "default": 0
         }
 	]
 };

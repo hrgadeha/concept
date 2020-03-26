@@ -1,15 +1,14 @@
 {
  "allow_import": 1,
- "autoname": "OCM-.###",
- "creation": "2020-03-17 22:02:32.480332",
+ "autoname": "RX-OCM-.###",
+ "creation": "2020-03-26 18:54:11.875593",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "company",
   "section_break_7",
-  "claimed",
-  "oem_claim_management_table",
+  "transaction_records",
   "status",
   "amended_from"
  ],
@@ -28,23 +27,17 @@
   },
   {
    "allow_bulk_edit": 1,
-   "fieldname": "oem_claim_management_table",
+   "fieldname": "transaction_records",
    "fieldtype": "Table",
-   "label": "Claim Records",
-   "options": "OEM Claim Management Table"
-  },
-  {
-   "depends_on": "eval:doc.docstatus == 1;",
-   "fieldname": "claimed",
-   "fieldtype": "Button",
-   "label": "Claimed"
+   "label": "Received OEM Records",
+   "options": "Received OEM Claim Table"
   },
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "OEM Claim Management",
+   "options": "Received OEM Claim",
    "print_hide": 1,
    "read_only": 1
   },
@@ -54,14 +47,14 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Status",
-   "options": "\nClaim Pending\nClaim Completed"
+   "options": "\nReceived"
   }
  ],
  "is_submittable": 1,
- "modified": "2020-03-26 20:55:44.934281",
+ "modified": "2020-03-26 20:55:31.899846",
  "modified_by": "Administrator",
  "module": "Automobile",
- "name": "OEM Claim Management",
+ "name": "Received OEM Claim",
  "owner": "Administrator",
  "permissions": [
   {
